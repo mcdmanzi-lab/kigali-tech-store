@@ -11,9 +11,13 @@ app.use(express.json())
 
 const stripeSecret = process.env.STRIPE_SECRET_KEY
 if (!stripeSecret) {
-  console.warn('Warning: STRIPE_SECRET_KEY not set in server/.env.local')
+  console.error('❌ ERROR: STRIPE_SECRET_KEY is missing from environment variables!')
+} else {
+  console.log('✅ STRIPE_SECRET_KEY is loaded (starts with: ' + stripeSecret.substring(0, 7) + '...)')
 }
+
 const stripe = Stripe(stripeSecret || '')
+
 
 app.post('/create-payment-intent', async (req, res) => {
   try {
