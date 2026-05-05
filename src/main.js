@@ -1,0 +1,33 @@
+import './assets/main.css'
+
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+
+import App from './App.vue'
+import router from './router'
+import { createI18n } from 'vue-i18n'
+import messages from './i18n'
+
+const app = createApp(App)
+
+app.use(createPinia())
+app.use(router)
+// i18n
+const i18n = createI18n({
+	legacy: false,
+	locale: 'en',
+	fallbackLocale: 'en',
+	messages
+})
+app.use(i18n)
+
+app.mount('#app')
+
+// Register service worker in production
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', () => {
+		navigator.serviceWorker.register('/sw.js').catch(err => {
+			console.warn('Service worker registration failed:', err)
+		})
+	})
+}

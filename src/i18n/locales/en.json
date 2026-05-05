@@ -1,0 +1,18 @@
+{
+  "app": {
+    "title": "Kigali Tech Store",
+    "welcome": "Welcome to Kigali Tech"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "profile": "Profile",
+    "admin": "Admin"
+  },
+  "buttons": {
+    "addToCart": "Add to Cart",
+    "loadMore": "Load more"
+  }
+}
